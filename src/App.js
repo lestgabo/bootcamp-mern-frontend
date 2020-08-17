@@ -10,9 +10,9 @@ const { Title } = Typography;
 const App = () => {
     return (
         <div className="root">
-            <Row>
-                <Col span={24}>
-                    <Title>Sport's App</Title>
+            <Row justify="center">
+                <Col sm={24} xs={24}>
+                    <Title style={{ textAlign: 'center' }}>Sport's App</Title>
                     <Routes />
                 </Col>
             </Row>

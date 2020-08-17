@@ -7,16 +7,20 @@ import api from '../../services/api';
 
 const { Title } = Typography;
 
+const cardHeadStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '0px',
+};
 const cardBodyStyle = {
-    width: '100%',
-    backgroundColor: `${geekblue[8]}`,
+    display: 'flex',
+    justifyContent: 'center',
 };
 
 const cardStyle = {
-    width: '600px',
+    backgroundColor: `${geekblue[0]}`,
     borderRadius: '10px',
-    display: 'flex',
-    justifyContent: 'center',
+    boxShadow: '2px 2px',
 };
 
 const Login = () => {
@@ -26,13 +30,9 @@ const Login = () => {
 
     return (
         <>
-            <Row>
-                <Col span={12} offset={6}>
-                    <Card style={cardStyle} bodyStyle={cardBodyStyle}>
-                        <Row>
-                            <Title>Login</Title>
-                        </Row>
-
+            <Row justify="center">
+                <Col sm={8} xs={24}>
+                    <Card title={<Title>Log in</Title>} style={cardStyle} headStyle={cardHeadStyle} bodyStyle={cardBodyStyle}>
                         <Form name="login" className="login-form" initialValues={{ remember: true }} onFinish={onFinish}>
                             {/* email */}
                             <Form.Item name="email" rules={[{ required: true, message: 'Missing email.' }]}>
