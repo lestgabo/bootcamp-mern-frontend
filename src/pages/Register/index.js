@@ -36,15 +36,20 @@ const Register = ({ history }) => {
         console.log('lastName -> ', lastName);
         console.log('email -> ', email);
         console.log('password -> ', password);
-        const response = await api.post('/user/register', { firstName, lastName, email, password });
-        const userId = response.data._id || false;
 
-        if (userId) {
-            localStorage.setItem('user', userId);
-            history.push('/dashboard');
-        } else {
-            const { message } = response.data;
-            console.log('message ->', message);
+        try {
+            const response = await api.post('/user/register', { firstName, lastName, email, password });
+            const userId = response.data._id || false;
+
+            if (userId) {
+                localStorage.setItem('user', userId);
+                history.push('/dashboard');
+            } else {
+                const { message } = response.data;
+                console.log('message ->', message);
+            }
+        } catch (error) {
+            console.log('error message->', error.response.data.message);
         }
     };
 

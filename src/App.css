@@ -1,5 +1,8 @@
 html body {
-    background-color: rgb(235, 235, 235);
+    /* gray */
+    /* background-color: rgb(235, 235, 235); */
+    /* very light orange */
+    background-color: #fff2e8;
     height: 100%;
     width: 100%;
     padding: 0px;
