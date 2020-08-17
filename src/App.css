@@ -1,3 +1,11 @@
+html body {
+    background-color: rgb(235, 235, 235);
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
 .root {
     width: 90vw;
     max-width: 1200px;
@@ -11,4 +19,31 @@
     display: flex;
     align-self: center;
     margin: auto;
+}
+
+/*****************/
+/** card **/
+.card-login {
+    width: 600px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/*****************/
+/** login form **/
+.login-form {
+    max-width: 300px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.ant-col-rtl .login-form-forgot {
+    float: left;
+}
+
+.login-form-button {
+    width: 100%;
 }
