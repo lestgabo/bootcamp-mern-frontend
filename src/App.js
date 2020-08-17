@@ -3,8 +3,7 @@ import 'antd/dist/antd.css';
 import { Row, Col, Typography } from 'antd';
 
 import './App.css';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import { Routes } from './routes';
 
 const { Title } = Typography;
 
@@ -14,8 +13,7 @@ const App = () => {
             <Row>
                 <Col span={24}>
                     <Title>Sport's App</Title>
-                    <Login />
-                    <Dashboard />
+                    <Routes />
                 </Col>
             </Row>
         </div>
