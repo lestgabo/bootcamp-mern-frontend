@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Row, Col, Typography, Card } from 'antd';
-import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
 import { orange } from '@ant-design/colors';
 
 import api from '../../services/api';
@@ -28,12 +28,15 @@ const cardStyle = {
     background: 'none',
 };
 
-const Login = ({ history }) => {
+const Register = ({ history }) => {
     const handleOnFinish = async (values) => {
         console.log('Received values of form: ', values);
-        const { email, password } = values;
-
-        const response = await api.post('/login', { email, password });
+        const { firstName, lastName, email, password } = values;
+        console.log('firstName -> ', firstName);
+        console.log('lastName -> ', lastName);
+        console.log('email -> ', email);
+        console.log('password -> ', password);
+        const response = await api.post('/user/register', { firstName, lastName, email, password });
         const userId = response.data._id || false;
 
         if (userId) {
@@ -49,9 +52,17 @@ const Login = ({ history }) => {
         <>
             <Row justify="center">
                 <Col sm={8} xs={24}>
-                    <Card title={<Title>Log in</Title>} style={cardStyle} headStyle={cardHeadStyle} bodyStyle={cardBodyStyle}>
+                    <Card title={<Title>Register</Title>} style={cardStyle} headStyle={cardHeadStyle} bodyStyle={cardBodyStyle}>
                         {/* login form */}
                         <Form name="login" className="login-form" initialValues={{ remember: true }} onFinish={handleOnFinish}>
+                            {/* first name */}
+                            <Form.Item name="firstName" rules={[{ required: true, message: 'Missing first name.' }]}>
+                                <Input prefix={<UserOutlined className="site-form-item-icon" />} type="text" placeholder="First Name" />
+                            </Form.Item>
+                            {/* last name */}
+                            <Form.Item name="lastName" rules={[{ required: true, message: 'Missing last name.' }]}>
+                                <Input prefix={<UserOutlined className="site-form-item-icon" />} type="text" placeholder="Last Name" />
+                            </Form.Item>
                             {/* email */}
                             <Form.Item name="email" rules={[{ required: true, message: 'Missing email.' }]}>
                                 <Input prefix={<MailOutlined className="site-form-item-icon" />} type="email" placeholder="Email" />
@@ -60,21 +71,11 @@ const Login = ({ history }) => {
                             <Form.Item name="password" rules={[{ required: true, message: 'Missing password.' }]}>
                                 <Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" placeholder="Password" />
                             </Form.Item>
-                            {/* remember or forgot password */}
-                            <Form.Item>
-                                <Form.Item name="remember" valuePropName="checked" noStyle>
-                                    <Checkbox>Remember me</Checkbox>
-                                </Form.Item>
-                                <a className="login-form-forgot" href="/register">
-                                    Forgot password
-                                </a>
-                            </Form.Item>
-                            {/* log in or register */}
+                            {/* register */}
                             <Form.Item>
                                 <Button type="primary" htmlType="submit" className="login-form-button">
-                                    Log in
+                                    Register
                                 </Button>
-                                Or <a href="#">register now!</a>
                             </Form.Item>
                         </Form>
                     </Card>
@@ -84,4 +85,4 @@ const Login = ({ history }) => {
     );
 };
 
-export default Login;
+export default Register;
