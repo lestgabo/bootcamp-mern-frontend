@@ -1,0 +1,14 @@
+.root {
+    width: 90vw;
+    max-width: 1200px;
+    padding-top: 64px;
+    margin: auto;
+}
+
+.rootMobile {
+    width: 100%;
+    padding-top: 64px;
+    display: flex;
+    align-self: center;
+    margin: auto;
+}
